@@ -3,21 +3,21 @@ package org.kakaoTechCampus.calculatorProject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OperationResults {
-    private final List<Integer> results;
+public class OperationResults<T extends Number> {
+    private final List<T> results;
 
     public OperationResults() {
         this.results = new ArrayList<>();
     }
 
-    public void save(int result) {
+    public void save(T result) {
         results.add(result);
     }
     public void delete(){
         results.remove(0);
     }
 
-    public List<Integer> getResults(){
+    public List<T> getResults(){
         return new ArrayList<>(results);
     }
 

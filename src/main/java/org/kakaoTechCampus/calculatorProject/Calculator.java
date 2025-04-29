@@ -3,13 +3,13 @@ package org.kakaoTechCampus.calculatorProject;
 import java.util.List;
 
 public class Calculator {
-    private OperationResults operationResults;
+    private OperationResults<Integer> operationResults;
 
     public Calculator() {
-        this.operationResults = new OperationResults();
+        this.operationResults = new OperationResults<>();
     }
 
-    public int calculate(int num1, int num2, String operator) throws ArithmeticException{
+    public int calculate(int num1, int num2, String operator){
         int result=0;
         boolean isError = false;
         switch (operator) {
@@ -45,7 +45,7 @@ public class Calculator {
         }
     }
 
-    public void setOperationResults(OperationResults operationResults) {
+    public void setOperationResults(OperationResults<Integer> operationResults) {
         this.operationResults = operationResults;
     }
 
