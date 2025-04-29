@@ -8,12 +8,14 @@ public class CaculatorApplication {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+        Calculator calculator = new Calculator();
 
         while(true) {
             int num1;
             int num2;
             String operator;
 
+            //Input num1, num2, operator
             try {
                 System.out.print("첫 번째 숫자를 입력하세요: ");
                 num1 = scanner.nextInt();
@@ -26,32 +28,17 @@ public class CaculatorApplication {
                 break;
             }
 
-            int result=0;
-            switch (operator) {
-                case "+":
-                    result = num1+num2;
-                    System.out.println("결과: " + num1 + " + " + num2 + " = " + result);
-                    break;
-                case "-":
-                    result = num1-num2;
-                    System.out.println("결과: " + num1 + " - " + num2 + " = " + result);
-                    break;
-                case "*":
-                    result = num1*num2;
-                    System.out.println("결과: " + num1 + " * " + num2 + " = " + result);
-                    break;
-                case "/":
-                    try {
-                        result = num1 / num2;
-                        System.out.println("결과: " + num1 + " / " + num2 + " = " + result);
-                        break;
-                    }catch (ArithmeticException e){
-                        System.out.println("divide by zero error occurs!");
-                        break;
-                    }
-                default:
-                    System.out.println("operator error");
-            }
+            //Calculate
+            int result = calculator.calculate(num1, num2, operator);
+            System.out.println("결과: " + num1 + operator + num2 + " = " + result);
+
+            //Delete Result
+            calculator.removeResult();
+
+            //Print Previous Results
+            calculator.printOperationResults();
+
+            //Check Exit
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String exitResponse = scanner.next();
             if(exitResponse.equals("exit")) break;
