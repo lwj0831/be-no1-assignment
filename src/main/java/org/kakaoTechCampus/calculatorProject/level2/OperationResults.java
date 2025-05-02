@@ -1,23 +1,23 @@
-package org.kakaoTechCampus.calculatorProject;
+package org.kakaoTechCampus.calculatorProject.level2;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OperationResults<T extends Number> {
-    private final List<T> results;
+public class OperationResults {
+    private final List<Integer> results;
 
     public OperationResults() {
         this.results = new ArrayList<>();
     }
 
-    public void save(T result) {
+    public void save(int result) {
         results.add(result);
     }
     public void delete(){
         results.remove(0);
     }
 
-    public List<T> getResults(){
+    public List<Integer> getResults(){
         return new ArrayList<>(results);
     }
 

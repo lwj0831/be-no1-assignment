@@ -1,9 +1,10 @@
-package org.kakaoTechCampus.calculatorProject;
+/*
+package org.kakaoTechCampus.calculatorProject.level3;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class CaculatorApplication {
+public class CalculatorApplication {
 
     public static void main(String[] args) {
 
@@ -15,8 +16,10 @@ public class CaculatorApplication {
         while(true) {
             Number num1;
             Number num2;
+            String operator="";
             OperatorType operatorType;
 
+            scanner.nextLine(); //Scanner 버퍼 초기화
             //Input num1, num2, operator
             try {
                 System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -24,9 +27,14 @@ public class CaculatorApplication {
                 System.out.print("두 번째 숫자를 입력하세요: ");
                 num2 = Parser.parseNumber(scanner.next());
                 System.out.print("사칙연산 기호를 입력하세요: ");
-                operatorType = OperatorType.getOperatorType(scanner.next());
-            }catch(IllegalArgumentException | InputMismatchException e) {
-                System.out.println("변수를 잘못 입력하였습니다. 다시 입력해주세요!");
+                operator = scanner.next();
+                operatorType = OperatorType.getOperatorType(operator);
+            }catch (IllegalArgumentException e) {
+                System.out.println("지원하지 않는 연산자(" + operator + ")입니다. 다시 입력해주세요!");
+                continue;
+            }
+            catch(InputMismatchException e) {
+                System.out.println("잘못된 피연산자를 입력하였습니다. 다시 입력해주세요!");
                 continue;
             }
 
@@ -36,12 +44,10 @@ public class CaculatorApplication {
             if (num1 instanceof Double || num2 instanceof Double) {
                 Double result = doubleCalculator.calculate(num1.doubleValue(), num2.doubleValue(), operatorType);
                 System.out.println("결과: " + num1 + operatorType.getSymbol() + num2 + " = " + result);
-                doubleCalculator.removeResult();
                 doubleCalculator.printOperationResults();
             } else {
                 Integer result = intCalculator.calculate(num1.intValue(), num2.intValue(), operatorType);
                 System.out.println("결과: " + num1 + operatorType.getSymbol() + num2 + " = " + result);
-                intCalculator.removeResult();
                 intCalculator.printOperationResults();
             }
 
@@ -52,3 +58,4 @@ public class CaculatorApplication {
         }
     }
 }
+*/

@@ -1,15 +1,15 @@
-package org.kakaoTechCampus.calculatorProject;
+package org.kakaoTechCampus.calculatorProject.level2;
 
 import java.util.List;
 
 public class Calculator {
-    private OperationResults<Integer> operationResults;
+    private OperationResults operationResults;
 
     public Calculator() {
-        this.operationResults = new OperationResults<>();
+        this.operationResults = new OperationResults();
     }
 
-    public int calculate(int num1, int num2, String operator){
+    public int calculate(int num1, int num2, String operator) throws ArithmeticException, IllegalArgumentException{
         int result=0;
         boolean isError = false;
         switch (operator) {
@@ -23,18 +23,14 @@ public class Calculator {
                 result = num1*num2;
                 break;
             case "/":
-                try {
-                    result = num1 / num2;
-                    break;
-                }catch (ArithmeticException e){
-                    System.out.println("divide by zero error occurs!");
-                    isError = true;
-                    break;
-                }
+                result = num1 / num2;
+                break;
             default:
-                System.out.println("operator error");
+                throw new IllegalArgumentException("divide by zero error occurs!");
         }
         if(!isError) this.operationResults.save(result);
+        removeResultIfNeeded();
+
         return result;
     }
 
@@ -45,14 +41,14 @@ public class Calculator {
         }
     }
 
-    public void setOperationResults(OperationResults<Integer> operationResults) {
+    public void setOperationResults(OperationResults operationResults) {
         this.operationResults = operationResults;
     }
 
-    public void removeResult(){
+    public void removeResultIfNeeded(){
         if(isRemovable()) this.operationResults.delete();
     }
-    
+
     //이전 연산 결과 3개만 저장하도록 설계
     public boolean isRemovable(){
         return this.operationResults.getSize() > 3;

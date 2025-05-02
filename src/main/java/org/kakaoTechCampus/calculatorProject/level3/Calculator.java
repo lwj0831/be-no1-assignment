@@ -1,0 +1,55 @@
+package org.kakaoTechCampus.calculatorProject.level3;
+
+import java.util.List;
+
+public class Calculator {
+    private OperationResults<Integer> operationResults;
+
+    public Calculator() {
+        this.operationResults = new OperationResults<>();
+    }
+
+    public int calculate(int num1, int num2, String operator) throws ArithmeticException, IllegalArgumentException{
+        int result=0;
+        boolean isError = false;
+        switch (operator) {
+            case "+":
+                result = num1+num2;
+                break;
+            case "-":
+                result = num1-num2;
+                break;
+            case "*":
+                result = num1*num2;
+                break;
+            case "/":
+                result = num1 / num2;
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid operator!");
+        }
+        if(!isError) this.operationResults.save(result);
+        removeResult();
+        return result;
+    }
+
+    public void printOperationResults(){
+        List<Integer> results = operationResults.getResults();
+        for (int i=1;i<=results.size();i++){
+            System.out.println(i + "번째 연산 결과: " + results.get(i-1));
+        }
+    }
+
+    public void setOperationResults(OperationResults<Integer> operationResults) {
+        this.operationResults = operationResults;
+    }
+
+    public void removeResult(){
+        if(isRemovable()) this.operationResults.delete();
+    }
+    
+    //이전 연산 결과 3개만 저장하도록 설계
+    public boolean isRemovable(){
+        return this.operationResults.getSize() > 3;
+    }
+}

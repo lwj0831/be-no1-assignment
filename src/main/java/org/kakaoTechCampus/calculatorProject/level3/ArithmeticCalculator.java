@@ -1,4 +1,4 @@
-package org.kakaoTechCampus.calculatorProject;
+package org.kakaoTechCampus.calculatorProject.level3;
 
 import java.util.List;
 
@@ -17,6 +17,7 @@ public class ArithmeticCalculator <T extends Number>{
             case DIVIDE -> divide(num1, num2);
         };
         if(result!=null) operationResults.save(result);
+        removeResult();
         return result;
     }
 

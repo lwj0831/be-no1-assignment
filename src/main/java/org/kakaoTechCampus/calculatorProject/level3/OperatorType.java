@@ -1,4 +1,4 @@
-package org.kakaoTechCampus.calculatorProject;
+package org.kakaoTechCampus.calculatorProject.level3;
 
 public enum OperatorType {
     PLUS("+"),
@@ -22,7 +22,7 @@ public enum OperatorType {
             case "-" -> MINUS;
             case "*" -> MULTIPLY;
             case "/" -> DIVIDE;
-            default -> throw new IllegalArgumentException("지원하지 않는 연산자입니다: " + symbol);
+            default -> throw new IllegalArgumentException("operator error");
         };
     }
 }
