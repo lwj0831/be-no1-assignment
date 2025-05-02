@@ -1,32 +1,33 @@
-/*
 package org.kakaoTechCampus.calculatorProject.level2;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class CalculatorApplication {
+public class Lv2_CalculatorApplication {
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Calculator calculator = new Calculator();
+        Lv2_Calculator calculator = new Lv2_Calculator();
 
         while(true) {
             int num1;
             int num2;
             String operator;
 
-            scanner.nextLine(); //Scanner 버퍼 초기화
             //Input num1, num2, operator
             try {
                 System.out.print("첫 번째 숫자를 입력하세요: ");
-                num1 = scanner.nextInt();
+                num1 = scanner.nextInt(); //개행 문자(\n)전까지 읽음
+                scanner.nextLine(); //개행 문자까지 읽어 Scanner 버퍼 비우기
                 System.out.print("두 번째 숫자를 입력하세요: ");
                 num2 = scanner.nextInt();
+                scanner.nextLine();
                 System.out.print("사칙연산 기호를 입력하세요: ");
                 operator = scanner.next();
             }catch(InputMismatchException e){
                 System.out.println("피연산자를 잘못 입력하였습니다. 다시 입력해주세요!");
+                scanner.nextLine(); //Scanner 버퍼 비우기
                 continue;
             }
 
@@ -52,4 +53,4 @@ public class CalculatorApplication {
             if(exitResponse.equals("exit")) break;
         }
     }
-}*/
+}

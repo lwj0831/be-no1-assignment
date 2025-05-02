@@ -1,6 +1,6 @@
 package org.kakaoTechCampus.calculatorProject.level3;
 
-public enum OperatorType {
+public enum Lv3_OperatorType {
     PLUS("+"),
     MINUS("-"),
     MULTIPLY("*"),
@@ -8,7 +8,7 @@ public enum OperatorType {
 
     private final String symbol;
 
-    OperatorType(String symbol) {
+    Lv3_OperatorType(String symbol) {
         this.symbol = symbol;
     }
 
@@ -16,7 +16,7 @@ public enum OperatorType {
         return symbol;
     }
 
-    public static OperatorType getOperatorType(String symbol) {
+    public static Lv3_OperatorType getOperatorType(String symbol) throws IllegalArgumentException {
         return switch (symbol) {
             case "+" -> PLUS;
             case "-" -> MINUS;
